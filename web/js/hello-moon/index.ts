@@ -1,4 +1,8 @@
-export async function main(counter: number, total: any): Promise<any> {
+export async function run() {
+    return await main(1, [])
+}
+
+async function main(counter: number, total: any): Promise<any> {
     const response = await makeRequest(
         options(counter)
     )

@@ -12,10 +12,7 @@ export async function main(app, json) {
         const sender = parsed.sender;
         // invoke hello-moon request
         if (sender === "user-increment") {
-            await HelloMoon.main(
-                1,
-                []
-            );
+            await HelloMoon.run();
             // or throw error
         } else {
             const msg = "invalid role sent to js: " + sender;
