@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <!-- Font Awesome-->
+    <script crossorigin="anonymous" src="https://kit.fontawesome.com/2da0275137.js"></script>
+    <!-- Custom Styles -->
+    <link href="css/custom.css" rel="stylesheet">
+</head>
+<body>
+<pre id="elm"></pre>
+<script src="elm.min.js"></script>
+<script type="module">
+    // init elm
+    let app = Elm.Main.init({node: document.getElementById("elm")});
+    // import js bundle
+    import {main, onWalletChange} from "./js/bundle.js";
+    //  listen for sender
+    app.ports.sender.subscribe(async function (json) {
+        await main(app, json);
+    });
+    // listen for wallet change
+    await onWalletChange(
+        app
+    );
+</script>
+</body>
+</html>
